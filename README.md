@@ -147,7 +147,16 @@ backend/
   tests/            # Testes unitários e HTTP com mocks
   .env.example
 mobile/
-  App.tsx           # Interface React Native
+  App.tsx           # Entrada mínima (5 linhas)
+  src/
+    components/     # Header, StudyInput, ActionSelector, ResultPanel,
+                    # Quiz, ReviewQuestions, Loading e Button
+    screens/Home/   # Composição da tela e estilos de layout
+    hooks/          # Estado, geração, reset e respostas do quiz
+    services/       # Chamada HTTP, timeout e erros da API
+    types/          # Contratos tipados por atividade
+    constants/      # Atividades, limites e conteúdo de exemplo
+    theme/          # Cores, espaçamentos e tipografia
   index.ts          # Entrada Expo
   app.json
 docs/
@@ -166,6 +175,7 @@ scripts/
 npm test
 npm run typecheck
 npm run build
+npm run format:check
 ```
 Os testes do backend não acessam o Gemini: usam funções injetadas e mocks. Com os dois servidores ativos e a chave configurada:
 ```bash
@@ -173,6 +183,11 @@ node scripts/smoke-gemini.mjs
 npm run qa:web
 ```
 O QA web requer Google Chrome instalado. Para Edge, defina `QA_BROWSER=msedge` no ambiente. Ele usa Gemini real para gerar os quatro resultados e simula somente falhas de rede e rate limit para testar a UX. As capturas de conteúdo usam respostas reais. Execuções reais consomem cota. Veja os resultados em [docs/qa.md](docs/qa.md).
+
+### Organização do frontend
+`App.tsx` apenas renderiza `HomeScreen`. A tela compõe os componentes e adapta as colunas à largura disponível. `useStudyAssistant` concentra estado, validação de entrada, trava de envio, geração, limpeza, revelação de respostas e seleções do quiz. `services/api.ts` é o único local com `fetch`, timeout e tradução de erros de transporte. Os resultados usam uma união discriminada por ação, com contratos específicos para cada atividade.
+
+Cada componente tem seu `styles.ts`, usando tokens de `theme/`. A identidade acadêmica usa azul discreto, branco e cinza, títulos diretos e cartões simples. Desktop exibe “Conteúdo de estudo” e “Resultado” lado a lado; no mobile, as áreas ficam empilhadas. A integração com IA aparece nas informações de uso e privacidade.
 
 ## Apresentação e limitações
 A apresentação de seis slides será criada após a validação do código pelo usuário, conforme solicitado. As capturas reais já estão em `docs/screenshots/`.

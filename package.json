@@ -13,8 +13,8 @@
     "typecheck": "npm run typecheck --workspaces",
     "build": "npm run build -w backend && npm run build -w mobile",
     "qa:web": "node scripts/qa-web.mjs",
-    "format": "prettier --write backend/src backend/tests mobile/App.tsx mobile/index.ts scripts",
-    "format:check": "prettier --check backend/src backend/tests mobile/App.tsx mobile/index.ts scripts",
+    "format": "prettier --write backend/src backend/tests mobile/src mobile/App.tsx mobile/index.ts scripts",
+    "format:check": "prettier --check backend/src backend/tests mobile/src mobile/App.tsx mobile/index.ts scripts",
     "security:check": "node scripts/check-secrets.mjs"
   },
   "devDependencies": {

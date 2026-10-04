@@ -16,9 +16,9 @@ Data: 04/10/2026. Ambiente: Windows, Node.js 24.14, Chrome headless, Expo Web SD
 | Validação e limites HTTP | Texto vazio/curto/longo, quantidade, JSON malformado, payload excessivo e campos desconhecidos |
 | Erros | Sem stack ou detalhes internos, 429/502/503/504 testados |
 | Quiz | Seleção correta/incorreta, gabarito, explicação, pontuação 1/2 e reinício |
-| Revisão | Revelação de resposta |
+| Revisão | Revelação, ocultação e nova revelação de resposta |
 | UX | Loading, botão desabilitado, validação, limpar e mensagens de erro |
-| Responsividade | Desktop 1440 px e viewport móvel 390 px sem overflow horizontal |
+| Responsividade | Desktop 1440 px em duas colunas, viewport móvel 390 px empilhada, sem overflow horizontal ou formulário fora do cartão |
 | Segurança | `.env` ignorado, exemplos vazios, nenhuma credencial nas capturas |
 | PowerPoint | Adiado por solicitação do usuário até validação do código |
 
@@ -33,6 +33,11 @@ As quatro gerações e screenshots usam o Gemini real. Apenas os cenários de fa
 - `screenshots/06-quiz-detalhe.png`: gabarito e pontuação
 - `screenshots/07-resumo-detalhe.png`: resultado completo
 - `screenshots/08-responsivo.png`: viewport móvel
+- `screenshots/09-responsivo-resultado.png`: área de resultado no mobile
+- `screenshots/10-responsivo-formulario.png`: controles e validação no mobile
+
+## Refatoração da interface acadêmica
+QA repetido após extração do frontend em `mobile/src/`. As quatro atividades continuam usando chamadas reais ao Gemini. A inspeção visual confirmou o tema azul/branco/cinza e a remoção dos elementos promocionais. O teste móvel inclui a geometria dos cartões, a contenção do botão de geração e sua operação após rolagem. `App.tsx` tem cinco linhas; componentes, estilos, hook, serviço, tipos, constantes e tema estão separados. `npm run format:check` inclui todos os arquivos novos em `mobile/src`.
 
 ## Auditoria de dependências
 `npm audit --omit=dev -w backend`: **0 vulnerabilidades** nas dependências de produção do backend.

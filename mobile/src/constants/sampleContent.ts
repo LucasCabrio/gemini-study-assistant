@@ -1,0 +1,2 @@
+export const sampleContent =
+  'A fotossíntese é o processo pelo qual plantas, algas e algumas bactérias convertem energia luminosa em energia química. Nas plantas, ocorre nos cloroplastos, que contêm clorofila. Água e dióxido de carbono são utilizados para produzir glicose, liberando oxigênio. A fase luminosa depende da luz e produz ATP e NADPH. O ciclo de Calvin utiliza essas moléculas para fixar carbono e formar açúcares.';

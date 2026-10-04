@@ -31,6 +31,18 @@ Componentes React Native (`View`, `Text`, `TextInput`, `Pressable`, `ScrollView`
 
 O quiz calcula acertos no frontend, bloqueia mudança após a escolha, exibe gabarito e justificativa, e permite recomeçar. O backend já envia o gabarito, portanto essa restrição é de interação, não de segurança de avaliações. Renderização usa apenas texto, sem `innerHTML`.
 
+### Organização do frontend
+- `App.tsx`: entrada com cinco linhas, apenas renderiza a tela.
+- `screens/Home`: composição dos componentes e layout responsivo.
+- `components`: cabeçalho, entrada, seleção de atividade, resultado, perguntas abertas, quiz, loading e botão reutilizado. Cada pasta mantém seu arquivo de estilos.
+- `hooks/useStudyAssistant.ts`: estado e operações da sessão de estudo, incluindo loading, erros, geração, reset, revelação e escolhas do quiz.
+- `services/api.ts`: único ponto de acesso HTTP, montagem do corpo conforme a ação, timeout e mensagens de transporte.
+- `types/study.ts`: tipos de entrada, perguntas e resultados discriminados por ação.
+- `constants`: catálogo de atividades, limites, quantidade e conteúdo de exemplo.
+- `theme`: cores neutras/azul, espaçamento, raios, breakpoints e tipografia compartilhada.
+
+Fluxo de dependências: a tela usa o hook e os componentes; o hook chama o serviço; componentes recebem dados e callbacks por props. Nenhum componente faz `fetch`. Estilos ficam nos arquivos `styles.ts`, e cores e tipografia vêm do tema. A separação mantém a integração HTTP e as regras de interação fora dos componentes de apresentação.
+
 ## Backend e regras
 `app.ts` configura HTTP, segurança, CORS, parsing limitado, rate limit, rotas e middleware final de erros. A função `createApp` recebe o serviço por injeção para permitir testes isolados. `study.ts` concentra contratos, normalização, prompts e validação da saída. `gemini.ts` encapsula o SDK oficial e tradução de erros. `server.ts` lê o ambiente e inicia a aplicação.
 
