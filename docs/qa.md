@@ -20,7 +20,7 @@ Data: 04/10/2026. Ambiente: Windows, Node.js 24.14, Chrome headless, Expo Web SD
 | UX | Loading, botão desabilitado, validação, limpar e mensagens de erro |
 | Responsividade | Desktop 1440 px em duas colunas, viewport móvel 390 px empilhada, sem overflow horizontal ou formulário fora do cartão |
 | Segurança | `.env` ignorado, exemplos vazios, nenhuma credencial nas capturas |
-| PowerPoint | Adiado por solicitação do usuário até validação do código |
+| PowerPoint e PDF | Seis slides/páginas 16:9, nomes e RAs corretos, screenshots reais e revisão visual |
 
 As quatro gerações e screenshots usam o Gemini real. Apenas os cenários de falha de rede e rate limit no teste web são simulados. Testes unitários/HTTP usam mocks, sem consumir a API.
 
@@ -49,4 +49,5 @@ A auditoria geral registra **23 ocorrências transitivas (16 altas e 7 moderadas
 - Sem implantação pública, autenticação ou teste de carga distribuída.
 - Limites da conta Gemini podem variar; requisições reais usam a cota configurada no Google.
 - Health check não comprova validade da chave; o smoke real comprova o funcionamento no momento do teste.
-- Ainda não há PPTX: essa etapa depende da validação solicitada pelo usuário.
+- O PPTX passou por validação estrutural, reimportação e renderização de todos os slides. Não houve abertura no aplicativo Microsoft PowerPoint neste ambiente.
+- O PDF preserva o layout como páginas renderizadas em alta resolução. Para editar textos ou o diagrama, utilizar o PPTX.

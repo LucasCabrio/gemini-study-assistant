@@ -164,7 +164,8 @@ docs/
   qa.md
   screenshots/      # Capturas reais no navegador
 presentation/
-  README.md         # Apresentação aguardando validação do código
+  Gemini-Study-Assistant.pptx
+  Gemini-Study-Assistant.pdf
 scripts/
   smoke-gemini.mjs   # Smoke real dos quatro endpoints
   qa-web.mjs         # QA web com capturas
@@ -190,6 +191,6 @@ O QA web requer Google Chrome instalado. Para Edge, defina `QA_BROWSER=msedge` n
 Cada componente tem seu `styles.ts`, usando tokens de `theme/`. A identidade acadêmica usa azul discreto, branco e cinza, títulos diretos e cartões simples. Desktop exibe “Conteúdo de estudo” e “Resultado” lado a lado; no mobile, as áreas ficam empilhadas. A integração com IA aparece nas informações de uso e privacidade.
 
 ## Apresentação e limitações
-A apresentação de seis slides será criada após a validação do código pelo usuário, conforme solicitado. As capturas reais já estão em `docs/screenshots/`.
+A apresentação tem seis slides em formato 16:9, com os nomes e RAs dos autores e capturas reais da interface acadêmica validada. Arquivos: [PowerPoint](presentation/Gemini-Study-Assistant.pptx) e [PDF](presentation/Gemini-Study-Assistant.pdf). As capturas estão em `docs/screenshots/`.
 
 Projeto acadêmico sem autenticação ou persistência. Conteúdo e resultados ficam apenas na memória do frontend, mas o texto é enviado ao Google e está sujeito aos termos do provedor. A interface orienta a evitar dados pessoais. IA pode errar e deve ser conferida com fontes e professor. Gabarito acompanha a resposta HTTP e só é revelado pela interface após seleção: não se trata de uma plataforma de provas seguras. Rate limit em memória é adequado à execução local de uma instância; produção pública precisaria autenticação, armazenamento compartilhado de limites e monitoramento.
