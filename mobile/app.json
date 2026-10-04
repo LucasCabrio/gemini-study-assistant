@@ -1,0 +1,14 @@
+{
+  "expo": {
+    "name": "Gemini Study Assistant",
+    "slug": "gemini-study-assistant",
+    "version": "1.0.0",
+    "orientation": "default",
+    "userInterfaceStyle": "light",
+    "web": {
+      "bundler": "metro",
+      "name": "Gemini Study Assistant"
+    },
+    "plugins": ["expo-status-bar"]
+  }
+}
